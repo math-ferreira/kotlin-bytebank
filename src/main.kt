@@ -1,5 +1,35 @@
 fun main() {
     println("Hello World ByteBank")
+
+    testaObjetos()
+}
+
+class Conta {
+    var titular = ""
+    var numero = 0
+    var saldo = 0.0
+}
+
+fun testaObjetos() {
+    val contaMatheus = Conta()
+    contaMatheus.titular = "Matheus"
+    contaMatheus.numero = 10
+    contaMatheus.saldo = 1500.00
+
+    val contaMaysa = Conta()
+    contaMaysa.titular = "Maysa"
+    contaMaysa.numero = 200
+    contaMaysa.saldo = 1000.00
+
+    println(contaMatheus.titular)
+    println(contaMaysa.titular)
+
+    println("Depositando na conta do Matheus")
+    deposita(contaMatheus, 150.00)
+}
+
+fun deposita(conta: Conta, valor: Double) {
+    conta.saldo += valor;
 }
 
 fun testaLacos() {
