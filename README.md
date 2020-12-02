@@ -17,8 +17,6 @@ https://www.oracle.com/java/technologies/javase-jre8-downloads.html
 
 ## 🛠️ Construído com
 
-Mencione as ferramentas que você usou para criar seu projeto
-
 * [Kotlin](https://kotlinlang.org/) - A linguagem de programação
 
 ## 📌 Versão
