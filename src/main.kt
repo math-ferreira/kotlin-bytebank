@@ -8,6 +8,25 @@ class Conta {
     var titular = ""
     var numero = 0
     var saldo = 0.0
+
+    fun deposita(valor: Double) {
+        this.saldo += valor;
+    }
+
+    fun saca(valor: Double) {
+        if (this.saldo >= valor) {
+            this.saldo -= valor
+        }
+    }
+
+    fun transfere(valor: Double, contaDestino: Conta): Boolean {
+        if (this.saldo >= valor) {
+            this.saldo -= valor
+            contaDestino.saldo += valor
+            return true
+        }
+        return false
+    }
 }
 
 fun testaObjetos() {
@@ -24,13 +43,28 @@ fun testaObjetos() {
     println(contaMatheus.titular)
     println(contaMaysa.titular)
 
-    println("Depositando na conta do Matheus")
-    deposita(contaMatheus, 150.00)
+    println("- Depositando na conta do Matheus")
+    contaMatheus.deposita(150.00)
+    println(contaMatheus.saldo)
+
+    println("- Sacando da conta Matheus")
+    contaMatheus.saca(40.0)
+    println(contaMatheus.saldo)
+
+    println("- Saque em excesso Maysa")
+    contaMaysa.saca(1200.00)
+    println(contaMaysa.saldo)
+
+    println("- Transferencia da conta do Matheus para a conta da Maysa")
+    println("Saldo Matheus: ${contaMatheus.saldo} e saldo Maysa: ${contaMaysa.saldo}")
+    if (contaMatheus.transfere(120.00, contaMaysa)) {
+        println("Transferencia realizada com sucesso")
+    } else {
+        println("Transferencia não realizada")
+    }
+    println("Saldo Matheus: ${contaMatheus.saldo} e saldo Maysa: ${contaMaysa.saldo}")
 }
 
-fun deposita(conta: Conta, valor: Double) {
-    conta.saldo += valor;
-}
 
 fun testaLacos() {
 
