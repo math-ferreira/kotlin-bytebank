@@ -5,9 +5,35 @@ fun main() {
 }
 
 class Conta {
-    var titular = ""
-    var numero = 0
-    var saldo = 0.0
+    private var titular = ""
+    private var numero = 0
+    private var saldo = 0.0
+
+    fun getTitular(): String {
+        return titular
+    }
+
+    fun setTitular(titular: String) {
+        this.titular = titular
+    }
+
+    fun getNumero(): Int {
+        return numero
+    }
+
+    fun setNumero(titular: Int) {
+        this.numero = numero
+    }
+
+    fun getSaldo(): Double {
+        return saldo
+    }
+
+    fun setSaldo(saldo: Double) {
+        if (saldo > 0) {
+            this.saldo = saldo
+        }
+    }
 
     fun deposita(valor: Double) {
         this.saldo += valor;
@@ -22,7 +48,7 @@ class Conta {
     fun transfere(valor: Double, contaDestino: Conta): Boolean {
         if (this.saldo >= valor) {
             this.saldo -= valor
-            contaDestino.saldo += valor
+            contaDestino.deposita(valor)
             return true
         }
         return false
@@ -31,38 +57,38 @@ class Conta {
 
 fun testaObjetos() {
     val contaMatheus = Conta()
-    contaMatheus.titular = "Matheus"
-    contaMatheus.numero = 10
-    contaMatheus.saldo = 1500.00
+    contaMatheus.setTitular("Matheus")
+    contaMatheus.setNumero(10)
+    contaMatheus.setSaldo(1500.00)
 
     val contaMaysa = Conta()
-    contaMaysa.titular = "Maysa"
-    contaMaysa.numero = 200
-    contaMaysa.saldo = 1000.00
+    contaMaysa.setTitular("Maysa")
+    contaMaysa.setNumero(200)
+    contaMaysa.setSaldo(1000.00)
 
-    println(contaMatheus.titular)
-    println(contaMaysa.titular)
+    println(contaMatheus.getTitular())
+    println(contaMaysa.getTitular())
 
     println("- Depositando na conta do Matheus")
     contaMatheus.deposita(150.00)
-    println(contaMatheus.saldo)
+    println(contaMatheus.getSaldo())
 
     println("- Sacando da conta Matheus")
     contaMatheus.saca(40.0)
-    println(contaMatheus.saldo)
+    println(contaMatheus.getSaldo())
 
     println("- Saque em excesso Maysa")
     contaMaysa.saca(1200.00)
-    println(contaMaysa.saldo)
+    println(contaMaysa.getSaldo())
 
     println("- Transferencia da conta do Matheus para a conta da Maysa")
-    println("Saldo Matheus: ${contaMatheus.saldo} e saldo Maysa: ${contaMaysa.saldo}")
+    println("Saldo Matheus: ${contaMatheus.getSaldo()} e saldo Maysa: ${contaMaysa.getSaldo()}")
     if (contaMatheus.transfere(120.00, contaMaysa)) {
         println("Transferencia realizada com sucesso")
     } else {
         println("Transferencia não realizada")
     }
-    println("Saldo Matheus: ${contaMatheus.saldo} e saldo Maysa: ${contaMaysa.saldo}")
+    println("Saldo Matheus: ${contaMatheus.getSaldo()} e saldo Maysa: ${contaMaysa.getSaldo()}")
 }
 
 
