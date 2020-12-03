@@ -4,9 +4,11 @@ fun main() {
     testaObjetos()
 }
 
-class Conta {
-    var titular = ""
-    var numero = 0
+class Conta(
+        val titular: String,
+        //val numero: Int = 0 se não for informado, assume valor 0
+        val numero: Int
+) {
     var saldo = 0.0
         private set
 
@@ -61,18 +63,17 @@ class Conta {
 }
 
 fun testaObjetos() {
-    val contaMatheus = Conta()
-    contaMatheus.titular = " Matheus "
-    contaMatheus.numero = 10
-    contaMatheus.deposita(1500.00)
+    val contaMatheus = Conta("Matheus", 1000)
+    // val contaMatheus = Conta(titular = "Matheus",numero = 1000) Outra forma de declarar variaveis no Constructor - isso sao as chamadas Labels
+    // val contaMatheus = Conta(numero = 1000, titular = "Matheus") Nesse caso, indifere a ordem dos parametros
 
-    val contaMaysa = Conta()
-    contaMaysa.titular = " Maysa "
-    contaMaysa.numero = 200
-    contaMaysa.deposita(1000.00)
+    contaMatheus.deposita(15000.00)
 
-    println(contaMatheus.titular)
-    println(contaMaysa.titular)
+    val contaMaysa = Conta("Maysa", 2000)
+    contaMaysa.deposita(12000.00)
+
+    println("Conta 1 - Titular: ${contaMatheus.titular} e numero: ${contaMatheus.numero}")
+    println("Conta 2 - Titular: ${contaMaysa.titular} e numero: ${contaMaysa.numero}")
 
     println(" - Depositando na conta do Matheus ")
     contaMatheus.deposita(150.00)
