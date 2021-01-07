@@ -1,3 +1,4 @@
+import Diretor as Diretor
 
 fun main() {
     println("Hello World ByteBank")
@@ -7,10 +8,23 @@ fun main() {
             "13166836833",
             1000.0
     )
+    println(math)
 
-    println("Nome: ${math.nome}")
-    println("Cpf: ${math.cpf}")
-    println("Salario: ${math.salario}")
-    println("Bonificacao: ${math.bonificacao()}")
+    val antonio = Gerente(
+            "Antonio",
+            "10645514447",
+            7500.00,
+            566
+    )
+    println(antonio)
 
+
+    val maysa = Diretor(
+            "Maysa",
+            "3452098273",
+            15000.00,
+            123,
+            12500.00
+    )
+    println(maysa)
 }
