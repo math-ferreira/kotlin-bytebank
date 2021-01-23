@@ -27,4 +27,11 @@ fun main() {
             12500.00
     )
     println(maysa)
+
+    val calculadora = CalculadoraBonificacao()
+    calculadora.registra(math)
+    calculadora.registra(antonio)
+    calculadora.registra(maysa)
+
+    println("Total de bonificacao: ${calculadora.total}")
 }
