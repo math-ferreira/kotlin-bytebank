@@ -28,10 +28,20 @@ fun main() {
     )
     println(maysa)
 
+    val aline = Analista(
+            "Aline",
+            "58795200147",
+            3000.00
+    )
+    println(aline)
+
+
+
     val calculadora = CalculadoraBonificacao()
     calculadora.registra(math)
     calculadora.registra(antonio)
     calculadora.registra(maysa)
+    calculadora.registra(aline)
 
     println("Total de bonificacao: ${calculadora.total}")
 }

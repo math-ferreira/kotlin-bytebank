@@ -15,7 +15,11 @@ class Diretor(
         return false
     }
 
-    override val bonificacao get() = super.bonificacao + this.salario + this.plr
+    override val bonificacao: Double
+        get() {
+            println("Bonificacao Diretor")
+            return super.bonificacao + this.salario + this.plr
+        }
 
 
     override fun toString(): String {
