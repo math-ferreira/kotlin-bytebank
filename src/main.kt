@@ -3,45 +3,38 @@ import Diretor as Diretor
 fun main() {
     println("Hello World ByteBank")
 
-    val math = Funcionario(
-            "Matheus",
-            "13166836833",
-            1000.0
+    val contaCorrente: Conta = ContaCorrente(
+            titular = "Matheus",
+            numero = 1000
     )
-    println(math)
 
-    val antonio = Gerente(
-            "Antonio",
-            "10645514447",
-            7500.00,
-            566
+    val contaPoupanca: Conta = ContaPoupanca(
+            titular = "Maysa",
+            numero = 2000
     )
-    println(antonio)
+
+    contaCorrente.deposita(1000.00)
+    contaPoupanca.deposita(1000.00)
+
+    println("Saldo conta corrente: ${contaCorrente.saldo}")
+    println("Saldo conta poupanca: ${contaPoupanca.saldo}")
+
+    contaCorrente.saca(100.00)
+    contaPoupanca.saca(100.00)
+
+    println("Saldo apos saque conta corrente: ${contaCorrente.saldo}")
+    println("Saldo apos saque conta poupanca: ${contaPoupanca.saldo}")
+
+    contaCorrente.transfere(100.00, contaPoupanca)
+
+    println("Saldo apos transferir conta corrente: ${contaCorrente.saldo}")
+    println("Saldo apos receber conta poupanca: ${contaPoupanca.saldo}")
+
+    contaPoupanca.transfere(100.00, contaCorrente)
+
+    println("Saldo apos transferir conta poupanca: ${contaPoupanca.saldo}")
+    println("Saldo apos receber conta corrente: ${contaCorrente.saldo}")
 
 
-    val maysa = Diretor(
-            "Maysa",
-            "3452098273",
-            15000.00,
-            123,
-            12500.00
-    )
-    println(maysa)
-
-    val aline = Analista(
-            "Aline",
-            "58795200147",
-            3000.00
-    )
-    println(aline)
-
-
-
-    val calculadora = CalculadoraBonificacao()
-    calculadora.registra(math)
-    calculadora.registra(antonio)
-    calculadora.registra(maysa)
-    calculadora.registra(aline)
-
-    println("Total de bonificacao: ${calculadora.total}")
 }
+
